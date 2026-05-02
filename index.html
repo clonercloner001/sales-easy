@@ -364,6 +364,28 @@
             border-bottom: 1px solid rgba(230, 199, 86, 0.18);
         }
 
+        .mockup-stage {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #10100b;
+        }
+
+        .mockup-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            animation: jewellerySlide 8s infinite;
+        }
+
+        .mockup-slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .mockup-slide:nth-child(2) {
+            animation-delay: 4s;
+        }
+
         .mockup-top span {
             width: 10px;
             height: 10px;
@@ -380,8 +402,9 @@
         }
 
         .mockup-card img {
+            display: block;
             width: 100%;
-            aspect-ratio: 16 / 9;
+            height: 100%;
             object-fit: cover;
             object-position: left top;
             opacity: 0.94;
@@ -517,12 +540,12 @@
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 18px;
         }
 
         .feature-card {
-            min-height: 240px;
+            min-height: 210px;
             padding: 28px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
@@ -573,6 +596,288 @@
 
         .split {
             background: #fff;
+        }
+
+        .jewellery {
+            position: relative;
+            background:
+                radial-gradient(circle at 12% 20%, rgba(230, 199, 86, 0.16), transparent 28%),
+                radial-gradient(circle at 86% 18%, rgba(12, 154, 164, 0.12), transparent 26%),
+                linear-gradient(135deg, #0d0c08 0%, #17140c 52%, #0b0b08 100%);
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .jewellery::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.032) 0 1px, transparent 1px 18px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.22), rgba(230, 199, 86, 0.05), rgba(0, 0, 0, 0.24));
+        }
+
+        .jewellery-panel {
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 42px;
+            align-items: center;
+            padding: 36px;
+            border: 1px solid rgba(230, 199, 86, 0.24);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.055);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(14px);
+        }
+
+        .jewellery-copy .mini {
+            color: var(--gold);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .jewellery-copy h2 {
+            max-width: 560px;
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", Georgia, serif;
+            font-size: clamp(2.1rem, 4.4vw, 4rem);
+            font-weight: 500;
+            line-height: 1.02;
+            margin-bottom: 18px;
+        }
+
+        .jewellery-copy h2 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .jewellery-copy p {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 1.03rem;
+            margin-bottom: 18px;
+        }
+
+        .jewellery-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .jewellery-tags span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 36px;
+            padding: 0 12px;
+            border: 1px solid rgba(230, 199, 86, 0.28);
+            border-radius: 999px;
+            background: rgba(18, 16, 10, 0.64);
+            color: #fff4bd;
+            font-size: 0.88rem;
+            font-weight: 850;
+        }
+
+        .jewellery-tags i {
+            color: var(--gold);
+        }
+
+        .jewellery-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .jewellery-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.84);
+            font-weight: 720;
+        }
+
+        .jewellery-list i {
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        .jewellery-window {
+            position: relative;
+            border: 1px solid rgba(230, 199, 86, 0.24);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 28px 65px rgba(0, 0, 0, 0.34);
+            overflow: hidden;
+        }
+
+        .jewellery-slider {
+            position: relative;
+            aspect-ratio: 744 / 506;
+            overflow: hidden;
+            background: #0d0c08;
+        }
+
+        .jewellery-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            animation: jewellerySlide 8s infinite;
+        }
+
+        .jewellery-slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .jewellery-slide:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .jewellery-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .mockup-slide.has-text::before,
+        .jewellery-slide.has-text::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(8, 8, 6, 0.72), rgba(8, 8, 6, 0.26));
+        }
+
+        .slide-note {
+            position: absolute;
+            left: 34px;
+            top: 50%;
+            max-width: 390px;
+            transform: translateY(-50%);
+            padding: 22px;
+            border: 1px solid rgba(230, 199, 86, 0.34);
+            border-radius: var(--radius);
+            background: rgba(20, 18, 12, 0.86);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(12px);
+        }
+
+        .slide-note span,
+        .slide-note strong,
+        .slide-note small {
+            display: block;
+        }
+
+        .slide-note span {
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .slide-note strong {
+            color: #fff;
+            font-size: clamp(1.28rem, 2.1vw, 2rem);
+            line-height: 1.08;
+        }
+
+        .slide-note small {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .mockup-slide .slide-note {
+            left: 24px;
+            top: 24px;
+            max-width: 420px;
+            transform: none;
+        }
+
+        .slide-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            display: flex;
+            gap: 8px;
+            transform: translateX(-50%);
+        }
+
+        .slide-dots span {
+            width: 28px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.38);
+            animation: dotSlide 8s infinite;
+        }
+
+        .slide-dots span:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        @keyframes jewellerySlide {
+            0%, 44% {
+                opacity: 1;
+            }
+
+            50%, 94% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes dotSlide {
+            0%, 44% {
+                background: var(--gold);
+            }
+
+            50%, 94% {
+                background: rgba(255, 255, 255, 0.38);
+            }
+
+            100% {
+                background: var(--gold);
+            }
+        }
+
+        .jewellery-badge {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 16px;
+            border-top: 1px solid rgba(230, 199, 86, 0.24);
+            background: rgba(20, 18, 12, 0.9);
+            backdrop-filter: blur(12px);
+        }
+
+        .jewellery-badge strong,
+        .jewellery-badge span {
+            display: inline-flex;
+        }
+
+        .jewellery-badge strong {
+            color: var(--gold);
+            font-size: 1.3rem;
+            line-height: 1;
+            margin-bottom: 7px;
+        }
+
+        .jewellery-badge span {
+            color: rgba(255, 255, 255, 0.78);
+            font-weight: 750;
+            font-size: 0.9rem;
         }
 
         .split.alt {
@@ -642,8 +947,28 @@
         }
 
         .industries {
-            background: #14202c;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 18% 16%, rgba(230, 199, 86, 0.16), transparent 28%),
+                radial-gradient(circle at 82% 24%, rgba(6, 150, 168, 0.13), transparent 30%),
+                linear-gradient(135deg, #111009 0%, #1b2119 48%, #0f1822 100%);
             color: #fff;
+        }
+
+        .industries::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.034) 0 1px, transparent 1px 18px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0.18));
+            pointer-events: none;
+        }
+
+        .industries .wrap {
+            position: relative;
+            z-index: 1;
         }
 
         .industries .section-head h2 {
@@ -656,36 +981,234 @@
 
         .industry-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
         .industry {
+            cursor: pointer;
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            min-height: 118px;
-            padding: 18px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.13);
+            min-height: 128px;
+            padding: 20px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: var(--radius);
-            background: rgba(255, 255, 255, 0.06);
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035)),
+                rgba(13, 21, 28, 0.78);
             color: #fff;
             text-align: center;
             font-weight: 850;
+            font-family: inherit;
+            font-size: 1rem;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+            overflow: hidden;
+            transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .industry::after {
+            content: "";
+            position: absolute;
+            inset: auto 18px 0;
+            height: 3px;
+            border-radius: 999px 999px 0 0;
+            background: transparent;
+            transition: background 0.18s ease;
+        }
+
+        .industry:hover,
+        .industry:focus-visible,
+        .industry.is-active {
+            border-color: rgba(230, 199, 86, 0.55);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(230, 199, 86, 0.18), transparent 58%),
+                linear-gradient(145deg, rgba(230, 199, 86, 0.13), rgba(255, 255, 255, 0.045)),
+                rgba(24, 26, 20, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.25);
+            outline: none;
+        }
+
+        .industry:hover::after,
+        .industry:focus-visible::after,
+        .industry.is-active::after {
+            background: var(--gold);
         }
 
         .industry i {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: var(--radius);
-            background: rgba(6, 150, 168, 0.22);
-            color: #75e9f5;
-            font-size: 1.16rem;
+            background: rgba(6, 150, 168, 0.2);
+            color: #71edf7;
+            font-size: 1.2rem;
+        }
+
+        .industry.is-active i {
+            background: rgba(230, 199, 86, 0.2);
+            color: var(--gold);
+        }
+
+        .industry-detail {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 24px;
+            padding: 32px;
+            border: 1px solid rgba(230, 199, 86, 0.28);
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at 12% 0%, rgba(230, 199, 86, 0.13), transparent 38%),
+                rgba(255, 255, 255, 0.07);
+            box-shadow: 0 28px 66px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(14px);
+        }
+
+        .industry-detail .mini {
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .industry-detail h3 {
+            max-width: 560px;
+            color: #fff;
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.04;
+            margin-bottom: 14px;
+        }
+
+        .industry-detail h3 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .industry-detail p {
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 1rem;
+            font-weight: 650;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .industry-detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0 0 20px;
+        }
+
+        .industry-detail-tags span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 34px;
+            padding: 0 12px;
+            border: 1px solid rgba(230, 199, 86, 0.26);
+            border-radius: 999px;
+            background: rgba(16, 16, 10, 0.68);
+            color: #fff2bd;
+            font-size: 0.86rem;
+            font-weight: 850;
+        }
+
+        .industry-detail ul {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .industry-detail li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 720;
+            line-height: 1.45;
+        }
+
+        .industry-detail li i {
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        .industry-detail-visual {
+            position: relative;
+            min-height: 330px;
+            border: 1px solid rgba(230, 199, 86, 0.24);
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at 50% 95%, rgba(255, 255, 255, 0.38), transparent 24%),
+                linear-gradient(145deg, rgba(0, 0, 0, 0.45), rgba(9, 18, 20, 0.72));
+            overflow: hidden;
+            box-shadow: 0 26px 62px rgba(0, 0, 0, 0.32);
+        }
+
+        .industry-detail-visual img {
+            position: absolute;
+            left: 9%;
+            right: 9%;
+            bottom: 56px;
+            width: 82%;
+            border-radius: 8px;
+            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.32);
+        }
+
+        .industry-detail-badge {
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border: 1px solid rgba(230, 199, 86, 0.26);
+            border-radius: var(--radius);
+            background: rgba(24, 22, 15, 0.88);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(12px);
+        }
+
+        .industry-detail-badge i {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: rgba(230, 199, 86, 0.16);
+            color: var(--gold);
+        }
+
+        .industry-detail-badge strong,
+        .industry-detail-badge span {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .industry-detail-badge strong {
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .industry-detail-badge span {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 0.82rem;
+            font-weight: 700;
         }
 
         .contact {
@@ -809,7 +1332,8 @@
         @media (max-width: 1080px) {
             .hero-grid,
             .split-grid,
-            .contact-grid {
+            .contact-grid,
+            .jewellery-panel {
                 grid-template-columns: 1fr;
             }
 
@@ -825,6 +1349,10 @@
 
             .industry-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            .industry-detail {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -927,6 +1455,43 @@
                 grid-template-columns: 1fr;
             }
 
+            .jewellery-panel {
+                padding: 22px;
+            }
+
+            .slide-note {
+                left: 14px;
+                right: 14px;
+                max-width: none;
+                padding: 16px;
+            }
+
+            .slide-note strong {
+                font-size: 1.2rem;
+            }
+
+            .jewellery-badge {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .industry-detail ul {
+                grid-template-columns: 1fr;
+            }
+
+            .industry-detail {
+                padding: 22px;
+            }
+
+            .industry-detail-visual {
+                min-height: 260px;
+            }
+
+            .industry-detail-badge {
+                position: static;
+                margin: 14px;
+            }
+
             .section {
                 padding: 62px 0;
             }
@@ -1005,7 +1570,7 @@
                     </div>
 
                     <div class="hero-note">
-                        <span><i class="fa-solid fa-check"></i> Custom setup</span>
+                            <span><i class="fa-solid fa-check"></i> 100% customise setup</span>
                         <span><i class="fa-solid fa-check"></i> CA associate guidance</span>
                         <span><i class="fa-solid fa-check"></i> Staff friendly screens</span>
                     </div>
@@ -1014,7 +1579,23 @@
                 <div class="mockup" aria-label="Sales Easy software preview">
                     <div class="mockup-card">
                         <div class="mockup-top"><span></span><span></span><span></span></div>
-                        <img src="SALES EASY SALE WINDOW.PNG" alt="Sales Easy GST sale window">
+                        <div class="mockup-stage">
+                            <div class="mockup-slide">
+                                <img src="SALES EASY SALE WINDOW.PNG" alt="Sales Easy GST sale window">
+                            </div>
+                            <div class="mockup-slide has-text">
+                                <img src="2.PNG" alt="Sales Easy GST report support slide">
+                                <div class="slide-note">
+                                    <span>GST Report</span>
+                                    <strong>GST Report & Any Type Of GST Consultation</strong>
+                                    <small>Reports, GST filing support, ITR, and audit file help.</small>
+                                </div>
+                            </div>
+                            <div class="slide-dots" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="float-card float-left">
@@ -1043,16 +1624,16 @@
                     <span>Established</span>
                 </div>
                 <div class="proof-item">
-                    <strong>18+</strong>
-                    <span>Team Members</span>
+                    <strong>ALL INDIA</strong>
+                    <span>BEST AND TRUSTED CUSTOMER SUPPORT</span>
                 </div>
                 <div class="proof-item">
-                    <strong>Rs. 1 Cr</strong>
-                    <span>Yearly Turnover</span>
+                    <strong>10 Lakh+</strong>
+                    <span>Trusted Businesses</span>
                 </div>
                 <div class="proof-item">
                     <strong>100%</strong>
-                    <span>Custom Setup</span>
+                    <span>CUSTOMISE SETUP</span>
                 </div>
             </div>
         </section>
@@ -1060,46 +1641,70 @@
         <section id="features" class="section features">
             <div class="wrap">
                 <div class="section-head">
-                    <div class="mini">Complete Business Software</div>
-                    <h2>Everything your billing counter and back office need</h2>
-                    <p>Sales Easy keeps essential business work simple: create bills, update stock, manage purchase, track payments, print barcode labels, and prepare GST reports.</p>
+                    <div class="mini">Key Features</div>
+                    <h2>GST billing, reports, inventory, and support in one system</h2>
+                    <p>Sales Easy keeps your billing counter and back office ready for daily sales, GST work, audit files, stock control, and multi-user business management.</p>
                 </div>
 
                 <div class="feature-grid">
                     <article class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                        <h3>GST Billing</h3>
-                        <p>Create GST invoices with CGST, SGST, IGST, sale return, discount, payment mode, and print controls.</p>
+                        <h3>100% GST-compliant Bill</h3>
+                        <p>Create professional GST bills with clean tax breakup, print-ready invoice format, and business-ready billing controls.</p>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        <h3>Inventory Tracking</h3>
-                        <p>Manage item, batch, expiry, MRP, size, color, quantity, rate, and stock movement from purchase to sale.</p>
+                        <div class="feature-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <h3>Auto Calculation of CGST, SGST & IGST</h3>
+                        <p>Tax values calculate clearly for intra-state and inter-state billing, helping reduce manual mistakes.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-file-export"></i></div>
+                        <h3>GSTR-1, GSTR-3B, GSTR-9 Filing Made Easy</h3>
+                        <p>Keep GST reports organized so monthly, quarterly, and yearly filing preparation becomes simpler.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h3>Free GST Billing App - Fast & Simple</h3>
+                        <p>Use quick billing tools designed for daily staff use with a simple and familiar business workflow.</p>
                     </article>
 
                     <article class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-barcode"></i></div>
-                        <h3>Barcode Billing</h3>
-                        <p>Use barcode print and scan support to make counter sales faster and reduce manual entry mistakes.</p>
+                        <h3>Barcode, POS & Inventory Management</h3>
+                        <p>Handle barcode scanning, POS billing, stock movement, purchase entries, and inventory reports together.</p>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <h3>Purchase Entry</h3>
-                        <p>Handle supplier purchase, margin, GST on MRP, payment details, quantity, and tax breakup in one screen.</p>
+                        <div class="feature-icon"><i class="fa-solid fa-folder-open"></i></div>
+                        <h3>ITR & AUDIT File</h3>
+                        <p>Maintain business data and reports in a cleaner format for ITR, audit, and accountant support work.</p>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
-                        <h3>Accounts & Payments</h3>
-                        <p>Track party ledger, cash, credit, expense, outstanding amount, and daily money movement clearly.</p>
+                        <div class="feature-icon"><i class="fa-solid fa-display"></i></div>
+                        <h3>Works on Mobile & Desktop</h3>
+                        <p>Access business work from desktop and mobile-friendly tools according to your team workflow.</p>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                        <h3>Business Reports</h3>
-                        <p>Review sale, purchase, stock, GST, expense, and business summary reports whenever you need them.</p>
+                        <div class="feature-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h3>Cloud Backup & Data Security</h3>
+                        <p>Protect important billing, customer, inventory, and report data with backup-focused setup support.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-code-branch"></i></div>
+                        <h3>Multi-User & Multi-Branch Support</h3>
+                        <p>Run business operations with multiple staff users and branch-ready controls for growing teams.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                        <h3>24/7 Customer Support</h3>
+                        <p>Get trusted support for setup, daily use, billing questions, reports, and business workflow needs.</p>
                     </article>
                 </div>
             </div>
@@ -1170,13 +1775,46 @@
                     <p>Sales Easy can be configured around your product category, billing format, report needs, and staff workflow.</p>
                 </div>
 
-                <div class="industry-grid">
-                    <div class="industry"><i class="fa-solid fa-store"></i>Retail</div>
-                    <div class="industry"><i class="fa-solid fa-truck-ramp-box"></i>Wholesale</div>
-                    <div class="industry"><i class="fa-solid fa-capsules"></i>Pharmacy</div>
-                    <div class="industry"><i class="fa-solid fa-shirt"></i>Garments</div>
-                    <div class="industry"><i class="fa-solid fa-basket-shopping"></i>Grocery</div>
-                    <div class="industry"><i class="fa-solid fa-laptop"></i>Dealer</div>
+                <div class="industry-grid" aria-label="Business category options">
+                    <button class="industry is-active" type="button" data-industry="retail" aria-pressed="true"><i class="fa-solid fa-store"></i><span>Retail</span></button>
+                    <button class="industry" type="button" data-industry="wholesale" aria-pressed="false"><i class="fa-solid fa-truck-ramp-box"></i><span>Wholesale</span></button>
+                    <button class="industry" type="button" data-industry="pharmacy" aria-pressed="false"><i class="fa-solid fa-capsules"></i><span>Pharmacy</span></button>
+                    <button class="industry" type="button" data-industry="garments" aria-pressed="false"><i class="fa-solid fa-shirt"></i><span>Garments</span></button>
+                    <button class="industry" type="button" data-industry="grocery" aria-pressed="false"><i class="fa-solid fa-basket-shopping"></i><span>Grocery</span></button>
+                    <button class="industry" type="button" data-industry="dealer" aria-pressed="false"><i class="fa-solid fa-laptop"></i><span>Dealer</span></button>
+                    <button class="industry" type="button" data-industry="jewellery" aria-pressed="false"><i class="fa-solid fa-gem"></i><span>Jewellery</span></button>
+                    <button class="industry" type="button" data-industry="hospital" aria-pressed="false"><i class="fa-solid fa-hospital"></i><span>Hospital</span></button>
+                </div>
+
+                <div class="industry-detail" id="industryDetail" aria-live="polite">
+                    <div class="industry-detail-copy">
+                        <div class="mini">Retail Solution</div>
+                        <h3>Retail <span>Business Software</span></h3>
+                        <p>Premium retail billing setup for shops that need fast invoices, clear stock, GST reports, and staff-friendly daily counter workflow.</p>
+                        <div class="industry-detail-tags">
+                            <span><i class="fa-solid fa-file-invoice"></i> GST Billing</span>
+                            <span><i class="fa-solid fa-barcode"></i> Barcode</span>
+                            <span><i class="fa-solid fa-chart-line"></i> Reports</span>
+                        </div>
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check"></i> Fast GST billing for daily counter sales and returns.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Barcode, MRP, discount, and payment mode support.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Stock update after every purchase and sale entry.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Customer ledger, due amount, and daily cash view.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> GST, sale, purchase, and profit reports in one place.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Simple screen flow for staff working at busy counters.</li>
+                        </ul>
+                    </div>
+                    <div class="industry-detail-visual">
+                        <img src="2.PNG" alt="Sales Easy software preview">
+                        <div class="industry-detail-badge">
+                            <i class="fa-solid fa-store"></i>
+                            <div>
+                                <strong>Retail Ready</strong>
+                                <span>Sales and stock view</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1186,7 +1824,7 @@
                 <div class="section-head">
                     <div class="mini">Book A Free Demo</div>
                     <h2>See how Sales Easy can fit your business</h2>
-                    <p>Call Cryptojet to discuss your billing workflow, required reports, business category, and custom setup needs.</p>
+                    <p>Call Cryptojet to discuss your billing workflow, required reports, business category, and customise setup needs.</p>
                 </div>
 
                 <div class="contact-grid">
@@ -1265,6 +1903,237 @@
                 links.classList.remove("is-open");
                 toggle.setAttribute("aria-expanded", "false");
                 toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+
+        const industryDetails = {
+            retail: {
+                eyebrow: "Retail Solution",
+                title: "Retail",
+                accent: "Business Software",
+                body: "Premium retail billing setup for shops that need fast invoices, clear stock, GST reports, and staff-friendly daily counter workflow.",
+                tags: ["GST Billing", "Barcode", "Reports"],
+                icon: "fa-store",
+                badgeTitle: "Retail Ready",
+                badgeText: "Sales and stock view",
+                points: [
+                    "Fast GST billing for daily counter sales and returns.",
+                    "Barcode, MRP, discount, and payment mode support.",
+                    "Stock update after every purchase and sale entry.",
+                    "Customer ledger, due amount, and daily cash view.",
+                    "GST, sale, purchase, and profit reports in one place.",
+                    "Simple screen flow for staff working at busy counters."
+                ]
+            },
+            wholesale: {
+                eyebrow: "Wholesale Solution",
+                title: "Wholesale",
+                accent: "Business Software",
+                body: "Premium wholesale setup for bulk orders, credit parties, supplier purchase, stock movement, and distributor-style reporting.",
+                tags: ["Bulk Billing", "Party Ledger", "Stock"],
+                icon: "fa-truck-ramp-box",
+                badgeTitle: "Wholesale Ready",
+                badgeText: "Bulk sales view",
+                points: [
+                    "Bulk billing with party-wise rate, discount, and credit handling.",
+                    "Supplier purchase, stock inward, and outward movement tracking.",
+                    "Outstanding reports for customers, dealers, and distributors.",
+                    "GST tax breakup with CGST, SGST, IGST, and invoice records.",
+                    "Fast item search for large product lists and repeat orders.",
+                    "Daily sales, purchase, stock, and payment summary reports."
+                ]
+            },
+            pharmacy: {
+                eyebrow: "Pharmacy Solution",
+                title: "Pharmacy",
+                accent: "Billing Software",
+                body: "Premium pharmacy billing flow for medicine counters that need batch, expiry, MRP, GST, supplier purchase, and daily stock control.",
+                tags: ["Batch", "Expiry", "GST"],
+                icon: "fa-capsules",
+                badgeTitle: "Pharmacy Ready",
+                badgeText: "Medicine stock view",
+                points: [
+                    "Medicine billing with batch, expiry, MRP, quantity, and tax fields.",
+                    "Purchase entry support for supplier invoices and stock updates.",
+                    "Expiry and stock visibility for better pharmacy counter control.",
+                    "GST billing, sale return, and payment mode management.",
+                    "Customer and supplier ledger support for regular business records.",
+                    "Reports for stock, sale, purchase, tax, and daily cash review."
+                ]
+            },
+            garments: {
+                eyebrow: "Garments Solution",
+                title: "Garments",
+                accent: "Billing Software",
+                body: "Premium garments setup for size, color, style, barcode billing, stock variants, offers, and retail counter sales.",
+                tags: ["Size", "Color", "POS"],
+                icon: "fa-shirt",
+                badgeTitle: "Garments Ready",
+                badgeText: "Variant stock view",
+                points: [
+                    "Item setup for size, color, style, barcode, and category tracking.",
+                    "Fast POS billing for retail counters and seasonal sale rush.",
+                    "Stock management for variants, purchase, sale, and returns.",
+                    "Discount, offer, GST, and payment mode support in one bill.",
+                    "Customer records for repeat buyers and loyalty-style follow-up.",
+                    "Reports for item-wise sale, stock, purchase, and profit view."
+                ]
+            },
+            grocery: {
+                eyebrow: "Grocery Solution",
+                title: "Grocery Store",
+                accent: "Billing Software",
+                body: "Premium grocery billing setup for quick counters, barcode items, mixed payments, purchase cycles, and daily inventory control.",
+                tags: ["Quick Bill", "Barcode", "Supplier"],
+                icon: "fa-basket-shopping",
+                badgeTitle: "Grocery Ready",
+                badgeText: "Fast counter view",
+                points: [
+                    "Quick billing for high-volume grocery counter transactions.",
+                    "Barcode, quantity, unit, MRP, discount, and GST support.",
+                    "Purchase and stock management for daily inventory control.",
+                    "Cash, UPI, card, credit, and mixed payment record handling.",
+                    "Supplier ledger and outstanding view for regular purchase cycles.",
+                    "Daily sale, stock, purchase, GST, and profit summary reports."
+                ]
+            },
+            dealer: {
+                eyebrow: "Dealer Solution",
+                title: "Dealer & Distributor",
+                accent: "Software",
+                body: "Premium dealer setup for party-wise billing, dispatch records, credit tracking, outstanding control, and branch-ready business reports.",
+                tags: ["Dispatch", "Credit", "Branches"],
+                icon: "fa-laptop",
+                badgeTitle: "Dealer Ready",
+                badgeText: "Party ledger view",
+                points: [
+                    "Dealer billing with party ledger, credit control, and due tracking.",
+                    "Purchase, sale, stock, and dispatch-ready record management.",
+                    "GST invoice support with CGST, SGST, IGST, and report view.",
+                    "Multi-user workflow for office, counter, and back-office teams.",
+                    "Customer-wise rate, business summary, and payment tracking.",
+                    "Reports for sales, stock, purchase, outstanding, and tax review."
+                ]
+            },
+            jewellery: {
+                eyebrow: "GST Report & Any Type Of GST Consultation",
+                title: "Jewellery Software for",
+                accent: "Billing, ERP & Smart Management",
+                body: "Equipped with special advanced tools, developed exclusively for your Jewellery Businesses. Trusted by 10 Lakh+ Businesses Across India.",
+                tags: ["Hallmark Gold", "GST Billing", "Mobile App"],
+                icon: "fa-gem",
+                badgeTitle: "Jewellery Ready",
+                badgeText: "Billing and ERP view",
+                points: [
+                    "Manage your Hallmark Gold Jewellery.",
+                    "Complete Solution for Accounts, Stock, CRM, Loyalty Schemes, Catalogues, and Mobile App.",
+                    "Extensive service network with a fully customisable package.",
+                    "Complete customer management to increase your revenues.",
+                    "Uninterrupted GST billing for jewellery business workflow.",
+                    "GST report and consultation support for jewellery businesses."
+                ]
+            },
+            hospital: {
+                eyebrow: "Hospital Solution",
+                title: "Hospital & Clinic",
+                accent: "Billing Software",
+                body: "Premium hospital and clinic billing setup for reception, service bills, medicine stock, patient records, and daily collection reports.",
+                tags: ["Patient", "Service Bill", "Collection"],
+                icon: "fa-hospital",
+                badgeTitle: "Hospital Ready",
+                badgeText: "Reception billing view",
+                points: [
+                    "Billing support for consultation, service, medicine, and package charges.",
+                    "Patient, customer, payment, and daily collection records in one place.",
+                    "Pharmacy-style stock support for medicine and consumable items.",
+                    "GST and report support where applicable for service billing records.",
+                    "Multi-user workflow for reception, billing desk, and back office.",
+                    "Daily reports for collection, dues, service sale, and stock review."
+                ]
+            }
+        };
+
+        const industryButtons = document.querySelectorAll(".industry");
+        const industryDetail = document.querySelector("#industryDetail");
+
+        const renderIndustryDetail = (key) => {
+            const detail = industryDetails[key];
+            if (!detail || !industryDetail) return;
+
+            industryDetail.innerHTML = "";
+
+            const copy = document.createElement("div");
+            copy.className = "industry-detail-copy";
+
+            const eyebrow = document.createElement("div");
+            eyebrow.className = "mini";
+            eyebrow.textContent = detail.eyebrow;
+
+            const title = document.createElement("h3");
+            title.append(document.createTextNode(`${detail.title} `));
+            const accent = document.createElement("span");
+            accent.textContent = detail.accent;
+            title.appendChild(accent);
+
+            const body = document.createElement("p");
+            body.textContent = detail.body;
+
+            const tags = document.createElement("div");
+            tags.className = "industry-detail-tags";
+            detail.tags.forEach((tag) => {
+                const tagItem = document.createElement("span");
+                const tagIcon = document.createElement("i");
+                tagIcon.className = "fa-solid fa-circle";
+                tagItem.append(tagIcon, document.createTextNode(tag));
+                tags.appendChild(tagItem);
+            });
+
+            const list = document.createElement("ul");
+            detail.points.forEach((point) => {
+                const item = document.createElement("li");
+                const icon = document.createElement("i");
+                icon.className = "fa-solid fa-circle-check";
+                item.append(icon, document.createTextNode(point));
+                list.appendChild(item);
+            });
+
+            copy.append(eyebrow, title, body, tags, list);
+
+            const visual = document.createElement("div");
+            visual.className = "industry-detail-visual";
+
+            const image = document.createElement("img");
+            image.src = "2.PNG";
+            image.alt = "Sales Easy software preview";
+
+            const badge = document.createElement("div");
+            badge.className = "industry-detail-badge";
+
+            const badgeIcon = document.createElement("i");
+            badgeIcon.className = `fa-solid ${detail.icon}`;
+
+            const badgeText = document.createElement("div");
+            const badgeTitle = document.createElement("strong");
+            badgeTitle.textContent = detail.badgeTitle;
+            const badgeLine = document.createElement("span");
+            badgeLine.textContent = detail.badgeText;
+            badgeText.append(badgeTitle, badgeLine);
+            badge.append(badgeIcon, badgeText);
+            visual.append(image, badge);
+
+            industryDetail.append(copy, visual);
+        };
+
+        industryButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                industryButtons.forEach((item) => {
+                    item.classList.remove("is-active");
+                    item.setAttribute("aria-pressed", "false");
+                });
+
+                button.classList.add("is-active");
+                button.setAttribute("aria-pressed", "true");
+                renderIndustryDetail(button.dataset.industry);
             });
         });
     </script>
