@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sales Easy by Cryptojet Software Solution & CA Associate - GST billing, inventory, purchase, barcode, accounts, and business report software for Indian businesses.">
+    <title>Sales Easy | GST Billing Software by Cryptojet</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --ink: #18212d;
+            --muted: #667487;
+            --soft: #f6fafc;
+            --cream: #fff8ef;
+            --panel: #ffffff;
+            --line: #e2ebf2;
+            --teal: #0696a8;
+            --teal-dark: #057483;
+            --green: #28a95b;
+            --orange: #ff8a3d;
+            --red: #e54f6d;
+            --shadow: 0 18px 44px rgba(24, 33, 45, 0.12);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff;
+            color: var(--ink);
+            font-family: "Inter", Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: #14202c;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.9rem;
+        }
+
+        .topbar .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            min-height: 38px;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .topbar strong {
+            color: #fff;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 8px 28px rgba(24, 33, 45, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 78px;
+            gap: 22px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand img {
+            width: 54px;
+            height: 54px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .brand strong,
+        .brand span {
+            display: block;
+        }
+
+        .brand strong {
+            font-size: 1.12rem;
+            font-weight: 900;
+            line-height: 1.05;
+        }
+
+        .brand span {
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 42px;
+            padding: 0 13px;
+            border-radius: var(--radius);
+            color: #304053;
+            font-size: 0.94rem;
+            font-weight: 800;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: #eaf8fa;
+            color: var(--teal-dark);
+            outline: none;
+        }
+
+        .nav-links .demo-link {
+            background: var(--orange);
+            color: #fff;
+            margin-left: 8px;
+            box-shadow: 0 12px 24px rgba(255, 138, 61, 0.25);
+        }
+
+        .hero {
+            position: relative;
+            padding: 74px 0 46px;
+            background:
+                radial-gradient(circle at 8% 16%, rgba(6, 150, 168, 0.15), transparent 28%),
+                radial-gradient(circle at 88% 10%, rgba(255, 138, 61, 0.2), transparent 28%),
+                linear-gradient(180deg, #fff8ef 0%, #ffffff 74%);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 0.98fr 1.02fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-grid > * {
+            min-width: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 34px;
+            padding: 0 12px;
+            border: 1px solid #cfeaf0;
+            border-radius: 999px;
+            background: #f0fbfd;
+            color: var(--teal-dark);
+            font-size: 0.84rem;
+            font-weight: 900;
+        }
+
+        .badge i {
+            color: var(--green);
+        }
+
+        .hero h1 {
+            max-width: 670px;
+            margin: 18px 0 18px;
+            color: #151f2b;
+            font-size: clamp(2.65rem, 5.5vw, 5.25rem);
+            font-weight: 900;
+            letter-spacing: 0;
+            line-height: 0.98;
+            overflow-wrap: anywhere;
+        }
+
+        .hero h1 span {
+            color: var(--teal);
+        }
+
+        .hero-copy {
+            max-width: 640px;
+            color: #536377;
+            font-size: clamp(1rem, 1.6vw, 1.16rem);
+            margin-bottom: 26px;
+            overflow-wrap: anywhere;
+        }
+
+        .hero-actions,
+        .section-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 50px;
+            padding: 0 22px;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            font-weight: 900;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: #fff;
+            box-shadow: 0 16px 32px rgba(6, 150, 168, 0.24);
+        }
+
+        .btn-primary:hover {
+            background: var(--teal-dark);
+        }
+
+        .btn-orange {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 16px 32px rgba(255, 138, 61, 0.24);
+        }
+
+        .btn-outline {
+            background: #fff;
+            border-color: var(--line);
+            color: var(--ink);
+        }
+
+        .hero-note {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .hero-note span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .hero-note i {
+            color: var(--green);
+        }
+
+        .mockup {
+            position: relative;
+        }
+
+        .mockup-card {
+            position: relative;
+            border: 1px solid #cbd9e4;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .mockup-top {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            min-height: 34px;
+            padding: 0 14px;
+            background: #eff5f8;
+            border-bottom: 1px solid #d9e5ed;
+        }
+
+        .mockup-top span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--red);
+        }
+
+        .mockup-top span:nth-child(2) {
+            background: var(--orange);
+        }
+
+        .mockup-top span:nth-child(3) {
+            background: var(--green);
+        }
+
+        .mockup-card img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            object-position: left top;
+        }
+
+        .float-card {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 16px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: 0 14px 28px rgba(24, 33, 45, 0.14);
+        }
+
+        .float-card i {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: #eaf8fa;
+            color: var(--teal);
+        }
+
+        .float-card strong,
+        .float-card span {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .float-card strong {
+            font-size: 0.98rem;
+        }
+
+        .float-card span {
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .float-left {
+            left: -28px;
+            bottom: 28px;
+        }
+
+        .float-right {
+            right: -18px;
+            top: 34px;
+        }
+
+        .proof {
+            padding: 10px 0 56px;
+            background: #fff;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .proof-item {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(24, 33, 45, 0.06);
+            text-align: center;
+        }
+
+        .proof-item strong {
+            display: block;
+            color: var(--teal-dark);
+            font-size: 1.65rem;
+            line-height: 1;
+            margin-bottom: 7px;
+        }
+
+        .proof-item span {
+            color: var(--muted);
+            font-size: 0.94rem;
+            font-weight: 800;
+        }
+
+        .section {
+            padding: 82px 0;
+        }
+
+        section {
+            scroll-margin-top: 96px;
+        }
+
+        .section-head {
+            max-width: 780px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .section-head .mini {
+            color: var(--teal-dark);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .section-head h2 {
+            color: var(--ink);
+            font-size: clamp(2rem, 4vw, 3.35rem);
+            line-height: 1.08;
+            letter-spacing: 0;
+            margin-bottom: 14px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .features {
+            background: var(--soft);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-card {
+            min-height: 240px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(24, 33, 45, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: #eaf8fa;
+            color: var(--teal);
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card:nth-child(2) .feature-icon,
+        .feature-card:nth-child(5) .feature-icon {
+            background: #ecf9f0;
+            color: var(--green);
+        }
+
+        .feature-card:nth-child(3) .feature-icon,
+        .feature-card:nth-child(6) .feature-icon {
+            background: #fff1e6;
+            color: var(--orange);
+        }
+
+        .feature-card h3 {
+            font-size: 1.16rem;
+            margin-bottom: 9px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.96rem;
+        }
+
+        .split {
+            background: #fff;
+        }
+
+        .split.alt {
+            background: linear-gradient(180deg, #fff 0%, #f6fafc 100%);
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .split-copy .mini {
+            color: var(--teal-dark);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .split-copy h2 {
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.08;
+            margin-bottom: 16px;
+        }
+
+        .split-copy p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .check-list {
+            display: grid;
+            gap: 12px;
+            list-style: none;
+            margin: 24px 0 0;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #34465a;
+            font-weight: 750;
+        }
+
+        .check-list i {
+            color: var(--green);
+            margin-top: 4px;
+        }
+
+        .screen-frame {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .screen-frame img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            object-position: left top;
+        }
+
+        .industries {
+            background: #14202c;
+            color: #fff;
+        }
+
+        .industries .section-head h2 {
+            color: #fff;
+        }
+
+        .industries .section-head p {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px;
+        }
+
+        .industry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 118px;
+            padding: 18px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            text-align: center;
+            font-weight: 850;
+        }
+
+        .industry i {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: rgba(6, 150, 168, 0.22);
+            color: #75e9f5;
+            font-size: 1.16rem;
+        }
+
+        .contact {
+            background:
+                radial-gradient(circle at 15% 22%, rgba(6, 150, 168, 0.13), transparent 32%),
+                linear-gradient(180deg, #fff8ef 0%, #ffffff 78%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .contact-card {
+            padding: 30px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 i {
+            color: var(--teal);
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 12px;
+            padding: 13px 0;
+            border-top: 1px solid var(--line);
+            color: #405165;
+        }
+
+        .contact-row:first-of-type {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .contact-row i {
+            width: 20px;
+            color: var(--teal);
+            margin-top: 4px;
+        }
+
+        .contact-row strong {
+            color: var(--ink);
+            font-weight: 900;
+        }
+
+        .contact-row a {
+            color: var(--teal-dark);
+            font-weight: 900;
+            overflow-wrap: anywhere;
+        }
+
+        .office-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .office-card {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(24, 33, 45, 0.07);
+        }
+
+        .office-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+
+        .office-card i {
+            color: var(--orange);
+        }
+
+        .office-card p {
+            color: var(--muted);
+            font-weight: 650;
+        }
+
+        .footer {
+            background: #101821;
+            color: rgba(255, 255, 255, 0.72);
+            padding: 24px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 60;
+            width: 58px;
+            height: 58px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 14px 30px rgba(37, 211, 102, 0.35);
+            font-size: 1.7rem;
+        }
+
+        @media (max-width: 1080px) {
+            .hero-grid,
+            .split-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+            .proof-grid,
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .industry-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 820px) {
+            .wrap {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .topbar .wrap {
+                font-size: 0.78rem;
+                gap: 8px;
+            }
+
+            .nav {
+                min-height: 72px;
+            }
+
+            .brand img {
+                width: 46px;
+                height: 46px;
+            }
+
+            .brand strong {
+                font-size: 1rem;
+            }
+
+            .brand span {
+                max-width: 214px;
+                white-space: normal;
+                line-height: 1.15;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 auto;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                right: 14px;
+                left: 14px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+                padding: 12px;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                background: #fff;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.is-open {
+                display: flex;
+            }
+
+            .nav-links a {
+                justify-content: center;
+            }
+
+            .nav-links .demo-link {
+                margin-left: 0;
+            }
+
+            .hero {
+                padding: 52px 0 36px;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-actions,
+            .section-actions {
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .float-card {
+                position: static;
+                margin-top: 12px;
+            }
+
+            .mockup {
+                display: grid;
+            }
+
+            .proof-grid,
+            .feature-grid,
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 62px 0;
+            }
+
+            .split.alt .split-grid .screen-frame {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .brand span {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.28rem;
+            }
+
+            .hero-copy,
+            .section-head p,
+            .split-copy p {
+                font-size: 0.98rem;
+            }
+
+            .feature-card,
+            .contact-card,
+            .office-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrap">
+            <span><strong>Sales Easy:</strong> GST billing software.</span>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="wrap nav">
+            <a class="brand" href="#home" aria-label="Sales Easy home">
+                <img src="SALES EASY SOFTWARE LOGO.PNG" alt="Sales Easy logo">
+                <span>
+                    <strong>Sales Easy</strong>
+                    <span>Cryptojet Software Solution & CA Associate</span>
+                </span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#billing">Billing</a></li>
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#contact" class="demo-link">Free Demo</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="wrap hero-grid">
+                <div class="hero-copy-block">
+                    <span class="badge"><i class="fa-solid fa-circle-check"></i> Made for Indian GST businesses</span>
+                    <h1>GST Billing<br>Software for<br><span>Growing<br>Businesses</span></h1>
+                    <p class="hero-copy">Manage sales, purchase, stock, barcode,<br>payments, and GST reports<br>in one desktop software.</p>
+
+                    <div class="hero-actions">
+                        <a href="tel:+918910907972" class="btn btn-orange"><i class="fa-solid fa-phone"></i> Get Free Demo</a>
+                        <a href="#features" class="btn btn-outline"><i class="fa-solid fa-list-check"></i> View Features</a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span><i class="fa-solid fa-check"></i> Custom setup</span>
+                        <span><i class="fa-solid fa-check"></i> CA associate guidance</span>
+                        <span><i class="fa-solid fa-check"></i> Staff friendly screens</span>
+                    </div>
+                </div>
+
+                <div class="mockup" aria-label="Sales Easy software preview">
+                    <div class="mockup-card">
+                        <div class="mockup-top"><span></span><span></span><span></span></div>
+                        <img src="SALES EASY SALE WINDOW.PNG" alt="Sales Easy GST sale window">
+                    </div>
+
+                    <div class="float-card float-left">
+                        <i class="fa-solid fa-receipt"></i>
+                        <div>
+                            <strong>GST Invoice</strong>
+                            <span>Print-ready billing</span>
+                        </div>
+                    </div>
+
+                    <div class="float-card float-right">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <div>
+                            <strong>Daily Reports</strong>
+                            <span>Sales and stock view</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="proof" aria-label="Business proof points">
+            <div class="wrap proof-grid">
+                <div class="proof-item">
+                    <strong>2017</strong>
+                    <span>Established</span>
+                </div>
+                <div class="proof-item">
+                    <strong>18+</strong>
+                    <span>Team Members</span>
+                </div>
+                <div class="proof-item">
+                    <strong>Rs. 1 Cr</strong>
+                    <span>Yearly Turnover</span>
+                </div>
+                <div class="proof-item">
+                    <strong>100%</strong>
+                    <span>Custom Setup</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section features">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="mini">Complete Business Software</div>
+                    <h2>Everything your billing counter and back office need</h2>
+                    <p>Sales Easy keeps essential business work simple: create bills, update stock, manage purchase, track payments, print barcode labels, and prepare GST reports.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <h3>GST Billing</h3>
+                        <p>Create GST invoices with CGST, SGST, IGST, sale return, discount, payment mode, and print controls.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <h3>Inventory Tracking</h3>
+                        <p>Manage item, batch, expiry, MRP, size, color, quantity, rate, and stock movement from purchase to sale.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-barcode"></i></div>
+                        <h3>Barcode Billing</h3>
+                        <p>Use barcode print and scan support to make counter sales faster and reduce manual entry mistakes.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <h3>Purchase Entry</h3>
+                        <p>Handle supplier purchase, margin, GST on MRP, payment details, quantity, and tax breakup in one screen.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <h3>Accounts & Payments</h3>
+                        <p>Track party ledger, cash, credit, expense, outstanding amount, and daily money movement clearly.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h3>Business Reports</h3>
+                        <p>Review sale, purchase, stock, GST, expense, and business summary reports whenever you need them.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="section split">
+            <div class="wrap split-grid">
+                <div class="split-copy">
+                    <div class="mini">Main Dashboard</div>
+                    <h2>One clean starting screen for daily business work</h2>
+                    <p>The Sales Easy dashboard gives staff a familiar desktop workspace for ledger, product, transaction, purchase, sale, GST report, expense, settings, and logout controls.</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Main menu access for sale, purchase, ledger, product, and reports</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Branded Sales Easy workspace for a professional first impression</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Simple desktop-style navigation for regular staff use</li>
+                    </ul>
+                </div>
+
+                <div class="screen-frame">
+                    <img src="SOFT DETAILS first window.PNG" alt="Sales Easy main dashboard screen">
+                </div>
+            </div>
+        </section>
+
+        <section id="billing" class="section split">
+            <div class="wrap split-grid">
+                <div class="split-copy">
+                    <div class="mini">Fast GST Billing</div>
+                    <h2>Create professional bills from a practical counter screen</h2>
+                    <p>The sale window is built for busy shops and offices where speed matters. Your team can enter customer details, item details, tax, payment mode, discount, and print options without jumping between multiple tools.</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check-circle"></i> GST sale, sale return, invoice print, and quick customer entry</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Cash, credit, discount, freight, and tax fields in one place</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Designed for retail, wholesale, and dealer billing workflows</li>
+                    </ul>
+                </div>
+
+                <div class="screen-frame">
+                    <img src="SALES EASY SALE WINDOW.PNG" alt="Sales Easy GST billing screen">
+                </div>
+            </div>
+        </section>
+
+        <section id="inventory" class="section split alt">
+            <div class="wrap split-grid">
+                <div class="screen-frame">
+                    <img src="SALES EASY PURCHASE WINDOW.PNG" alt="Sales Easy purchase and inventory screen">
+                </div>
+
+                <div class="split-copy">
+                    <div class="mini">Purchase & Stock Control</div>
+                    <h2>Know what came in, what went out, and what is left</h2>
+                    <p>Sales Easy connects purchase entry with stock details so your business records stay clean. Batch, expiry, MRP, GST, quantity, supplier, and payment details are organized for practical daily use.</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Purchase entry with item, supplier, rate, MRP, GST, and quantity</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Stock-ready fields for batch, expiry, size, color, and barcode</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Clear report support for business owner and CA review</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="industries" class="section industries">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="mini">Business Categories</div>
+                    <h2>Useful for many Indian business types</h2>
+                    <p>Sales Easy can be configured around your product category, billing format, report needs, and staff workflow.</p>
+                </div>
+
+                <div class="industry-grid">
+                    <div class="industry"><i class="fa-solid fa-store"></i>Retail</div>
+                    <div class="industry"><i class="fa-solid fa-truck-ramp-box"></i>Wholesale</div>
+                    <div class="industry"><i class="fa-solid fa-capsules"></i>Pharmacy</div>
+                    <div class="industry"><i class="fa-solid fa-shirt"></i>Garments</div>
+                    <div class="industry"><i class="fa-solid fa-basket-shopping"></i>Grocery</div>
+                    <div class="industry"><i class="fa-solid fa-laptop"></i>Dealer</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="mini">Book A Free Demo</div>
+                    <h2>See how Sales Easy can fit your business</h2>
+                    <p>Call Cryptojet to discuss your billing workflow, required reports, business category, and custom setup needs.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <h3><i class="fa-solid fa-headset"></i> Contact Details</h3>
+                        <div class="contact-row">
+                            <i class="fa-solid fa-user"></i>
+                            <span><strong>Owner:</strong> Ratnadip Chakraborty</span>
+                        </div>
+                        <div class="contact-row">
+                            <i class="fa-solid fa-phone"></i>
+                            <span><strong>Primary:</strong> <a href="tel:+918910907972">+91 8910907972</a></span>
+                        </div>
+                        <div class="contact-row">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <span><strong>Alternate:</strong> <a href="tel:+919883475725">+91 9883475725</a></span>
+                        </div>
+                        <div class="contact-row">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span><strong>Email:</strong> <a href="mailto:clonercloner000@gmail.com">clonercloner000@gmail.com</a></span>
+                        </div>
+                        <div class="contact-row">
+                            <i class="fa-solid fa-globe"></i>
+                            <span><strong>Website:</strong> <a href="https://www.cryptojet.co.in">www.cryptojet.co.in</a></span>
+                        </div>
+
+                        <div class="section-actions" style="margin-top: 22px;">
+                            <a href="tel:+918910907972" class="btn btn-orange"><i class="fa-solid fa-phone"></i> Call Now</a>
+                            <a href="mailto:clonercloner000@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Send Email</a>
+                        </div>
+                    </article>
+
+                    <div class="office-grid">
+                        <article class="office-card">
+                            <h4><i class="fa-solid fa-building"></i> Head Office</h4>
+                            <p>69/2 Regent Place, Ranikuthi<br>Tollygunj, Kolkata<br>West Bengal - 700050</p>
+                        </article>
+
+                        <article class="office-card">
+                            <h4><i class="fa-solid fa-building"></i> Branch Office</h4>
+                            <p>Turopara Lane, Radhabazar<br>Nabadwip, Nadia<br>West Bengal - 741302</p>
+                        </article>
+
+                        <article class="office-card">
+                            <h4><i class="fa-solid fa-user-tie"></i> Company</h4>
+                            <p>Cryptojet Software Solution & CA Associate was established in 2017 and builds custom billing software for practical business use.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p>&copy; 2026 Cryptojet Software Solution & CA Associate. All Rights Reserved. Designed for Sales Easy.</p>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/918910907972" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const toggle = document.querySelector(".nav-toggle");
+        const links = document.querySelector("#navLinks");
+
+        toggle.addEventListener("click", () => {
+            const isOpen = links.classList.toggle("is-open");
+            toggle.setAttribute("aria-expanded", String(isOpen));
+            toggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        links.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                links.classList.remove("is-open");
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
