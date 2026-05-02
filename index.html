@@ -13,18 +13,20 @@
 
     <style>
         :root {
-            --ink: #18212d;
-            --muted: #667487;
-            --soft: #f6fafc;
-            --cream: #fff8ef;
+            --ink: #17150f;
+            --muted: #6f746d;
+            --soft: #f8f4ea;
+            --cream: #fff8eb;
             --panel: #ffffff;
-            --line: #e2ebf2;
-            --teal: #0696a8;
-            --teal-dark: #057483;
-            --green: #28a95b;
-            --orange: #ff8a3d;
+            --line: #eadfca;
+            --teal: #0c9aa4;
+            --teal-dark: #05747d;
+            --green: #24b56a;
+            --orange: #d6aa2c;
+            --gold: #e6c756;
+            --gold-dark: #a9850d;
             --red: #e54f6d;
-            --shadow: 0 18px 44px rgba(24, 33, 45, 0.12);
+            --shadow: 0 22px 55px rgba(20, 16, 8, 0.18);
             --radius: 8px;
         }
 
@@ -39,7 +41,7 @@
         }
 
         body {
-            background: #fff;
+            background: #fbf7ee;
             color: var(--ink);
             font-family: "Inter", Arial, sans-serif;
             line-height: 1.6;
@@ -62,7 +64,7 @@
         }
 
         .topbar {
-            background: #14202c;
+            background: #0e0d09;
             color: rgba(255, 255, 255, 0.88);
             font-size: 0.9rem;
         }
@@ -85,13 +87,14 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid var(--line);
-            box-shadow: 0 8px 28px rgba(24, 33, 45, 0.08);
+            background: rgba(14, 13, 9, 0.92);
+            border-bottom: 1px solid rgba(230, 199, 86, 0.16);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
             backdrop-filter: blur(14px);
         }
 
         .nav {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -109,9 +112,10 @@
         .brand img {
             width: 54px;
             height: 54px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(230, 199, 86, 0.34);
             border-radius: 50%;
             background: #fff;
+            box-shadow: 0 0 0 4px rgba(230, 199, 86, 0.08), 0 12px 28px rgba(0, 0, 0, 0.22);
             object-fit: cover;
         }
 
@@ -121,13 +125,14 @@
         }
 
         .brand strong {
+            color: #fff;
             font-size: 1.12rem;
             font-weight: 900;
             line-height: 1.05;
         }
 
         .brand span {
-            color: var(--muted);
+            color: rgba(230, 199, 86, 0.82);
             font-size: 0.78rem;
             font-weight: 700;
             margin-top: 5px;
@@ -138,10 +143,10 @@
             display: none;
             width: 42px;
             height: 42px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(230, 199, 86, 0.22);
             border-radius: var(--radius);
-            background: #fff;
-            color: var(--ink);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
             cursor: pointer;
         }
 
@@ -158,7 +163,7 @@
             min-height: 42px;
             padding: 0 13px;
             border-radius: var(--radius);
-            color: #304053;
+            color: rgba(255, 255, 255, 0.78);
             font-size: 0.94rem;
             font-weight: 800;
             transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
@@ -166,26 +171,49 @@
 
         .nav-links a:hover,
         .nav-links a:focus-visible {
-            background: #eaf8fa;
-            color: var(--teal-dark);
+            background: rgba(230, 199, 86, 0.1);
+            color: #fff2a7;
             outline: none;
         }
 
         .nav-links .demo-link {
-            background: var(--orange);
-            color: #fff;
+            background: linear-gradient(135deg, #fff1a6, #c99b12);
+            color: #141008;
             margin-left: 8px;
-            box-shadow: 0 12px 24px rgba(255, 138, 61, 0.25);
+            box-shadow: 0 18px 32px rgba(214, 170, 44, 0.3);
         }
 
         .hero {
             position: relative;
-            padding: 74px 0 46px;
+            min-height: calc(100vh - 116px);
+            padding: 92px 0 88px;
             background:
-                radial-gradient(circle at 8% 16%, rgba(6, 150, 168, 0.15), transparent 28%),
-                radial-gradient(circle at 88% 10%, rgba(255, 138, 61, 0.2), transparent 28%),
-                linear-gradient(180deg, #fff8ef 0%, #ffffff 74%);
+                radial-gradient(circle at 18% 18%, rgba(230, 199, 86, 0.16), transparent 26%),
+                radial-gradient(circle at 82% 16%, rgba(12, 154, 164, 0.14), transparent 28%),
+                linear-gradient(120deg, rgba(8, 8, 6, 0.98), rgba(20, 18, 10, 0.94) 52%, rgba(8, 8, 6, 0.98)),
+                url("SOFT DETAILS first window.PNG") center / cover no-repeat;
             overflow: hidden;
+            color: #fff;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(8, 8, 6, 0.95) 0%, rgba(8, 8, 6, 0.82) 44%, rgba(8, 8, 6, 0.66) 100%),
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 16px);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 160px;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(251, 247, 238, 0), #fbf7ee);
         }
 
         .hero-grid {
@@ -205,36 +233,38 @@
             gap: 9px;
             min-height: 34px;
             padding: 0 12px;
-            border: 1px solid #cfeaf0;
+            border: 1px solid rgba(230, 199, 86, 0.34);
             border-radius: 999px;
-            background: #f0fbfd;
-            color: var(--teal-dark);
+            background: rgba(18, 16, 10, 0.66);
+            color: var(--gold);
             font-size: 0.84rem;
             font-weight: 900;
         }
 
         .badge i {
-            color: var(--green);
+            color: var(--gold);
         }
 
         .hero h1 {
             max-width: 670px;
             margin: 18px 0 18px;
-            color: #151f2b;
+            color: #fff;
+            font-family: Georgia, "Times New Roman", serif;
             font-size: clamp(2.65rem, 5.5vw, 5.25rem);
-            font-weight: 900;
+            font-weight: 500;
             letter-spacing: 0;
             line-height: 0.98;
             overflow-wrap: anywhere;
         }
 
         .hero h1 span {
-            color: var(--teal);
+            color: var(--gold);
+            font-style: italic;
         }
 
         .hero-copy {
             max-width: 640px;
-            color: #536377;
+            color: rgba(255, 255, 255, 0.78);
             font-size: clamp(1rem, 1.6vw, 1.16rem);
             margin-bottom: 26px;
             overflow-wrap: anywhere;
@@ -278,15 +308,16 @@
         }
 
         .btn-orange {
-            background: var(--orange);
-            color: #fff;
-            box-shadow: 0 16px 32px rgba(255, 138, 61, 0.24);
+            background: linear-gradient(135deg, #fff1a6, #c99b12);
+            color: #141008;
+            box-shadow: 0 18px 34px rgba(214, 170, 44, 0.32);
         }
 
         .btn-outline {
-            background: #fff;
-            border-color: var(--line);
-            color: var(--ink);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(230, 199, 86, 0.28);
+            color: #fff;
+            backdrop-filter: blur(10px);
         }
 
         .hero-note {
@@ -294,7 +325,7 @@
             flex-wrap: wrap;
             gap: 14px;
             margin-top: 22px;
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.72);
             font-size: 0.94rem;
             font-weight: 700;
         }
@@ -306,7 +337,7 @@
         }
 
         .hero-note i {
-            color: var(--green);
+            color: var(--gold);
         }
 
         .mockup {
@@ -315,11 +346,12 @@
 
         .mockup-card {
             position: relative;
-            border: 1px solid #cbd9e4;
+            border: 1px solid rgba(230, 199, 86, 0.26);
             border-radius: 8px;
-            background: #fff;
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 34px 75px rgba(0, 0, 0, 0.38);
             overflow: hidden;
+            backdrop-filter: blur(16px);
         }
 
         .mockup-top {
@@ -328,8 +360,8 @@
             gap: 7px;
             min-height: 34px;
             padding: 0 14px;
-            background: #eff5f8;
-            border-bottom: 1px solid #d9e5ed;
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(230, 199, 86, 0.18);
         }
 
         .mockup-top span {
@@ -352,6 +384,7 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             object-position: left top;
+            opacity: 0.94;
         }
 
         .float-card {
@@ -360,10 +393,11 @@
             align-items: center;
             gap: 12px;
             padding: 15px 16px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(230, 199, 86, 0.24);
             border-radius: var(--radius);
-            background: #fff;
-            box-shadow: 0 14px 28px rgba(24, 33, 45, 0.14);
+            background: rgba(24, 22, 15, 0.82);
+            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(14px);
         }
 
         .float-card i {
@@ -373,8 +407,8 @@
             align-items: center;
             justify-content: center;
             border-radius: var(--radius);
-            background: #eaf8fa;
-            color: var(--teal);
+            background: rgba(230, 199, 86, 0.16);
+            color: var(--gold);
         }
 
         .float-card strong,
@@ -385,10 +419,11 @@
 
         .float-card strong {
             font-size: 0.98rem;
+            color: #fff;
         }
 
         .float-card span {
-            color: var(--muted);
+            color: rgba(255, 255, 255, 0.68);
             font-size: 0.82rem;
             font-weight: 700;
         }
@@ -404,8 +439,11 @@
         }
 
         .proof {
-            padding: 10px 0 56px;
-            background: #fff;
+            margin-top: -46px;
+            position: relative;
+            z-index: 2;
+            padding: 0 0 64px;
+            background: #fbf7ee;
         }
 
         .proof-grid {
@@ -416,16 +454,16 @@
 
         .proof-item {
             padding: 22px;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(230, 199, 86, 0.2);
             border-radius: var(--radius);
-            background: #fff;
-            box-shadow: 0 12px 28px rgba(24, 33, 45, 0.06);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 16px 36px rgba(20, 16, 8, 0.11);
             text-align: center;
         }
 
         .proof-item strong {
             display: block;
-            color: var(--teal-dark);
+            color: var(--gold-dark);
             font-size: 1.65rem;
             line-height: 1;
             margin-bottom: 7px;
@@ -820,6 +858,9 @@
             }
 
             .nav-toggle {
+                position: absolute;
+                top: 15px;
+                right: 0;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -829,8 +870,8 @@
             .nav-links {
                 position: absolute;
                 top: 72px;
-                right: 14px;
-                left: 14px;
+                right: 0;
+                left: 0;
                 display: none;
                 flex-direction: column;
                 align-items: stretch;
