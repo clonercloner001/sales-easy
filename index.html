@@ -87,9 +87,12 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(14, 13, 9, 0.92);
-            border-bottom: 1px solid rgba(230, 199, 86, 0.16);
-            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+            background:
+                radial-gradient(circle at 8% 48%, rgba(255, 255, 255, 0.18), transparent 24%),
+                radial-gradient(circle at 86% 48%, rgba(3, 188, 255, 0.2), transparent 28%),
+                linear-gradient(95deg, rgba(35, 54, 151, 0.98), rgba(27, 73, 171, 0.98), rgba(8, 97, 195, 0.96));
+            border-bottom: 1px solid rgba(184, 218, 255, 0.32);
+            box-shadow: 0 16px 44px rgba(7, 24, 74, 0.28);
             backdrop-filter: blur(14px);
         }
 
@@ -132,7 +135,7 @@
         }
 
         .brand span {
-            color: rgba(230, 199, 86, 0.82);
+            color: rgba(219, 236, 255, 0.88);
             font-size: 0.78rem;
             font-weight: 700;
             margin-top: 5px;
@@ -153,48 +156,354 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 10px;
             list-style: none;
         }
 
         .nav-links a {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             min-height: 42px;
-            padding: 0 13px;
+            padding: 0 16px;
+            border: 1px solid rgba(255, 230, 139, 0.52);
             border-radius: var(--radius);
-            color: rgba(255, 255, 255, 0.78);
+            background:
+                linear-gradient(135deg, rgba(255, 244, 178, 0.96), rgba(214, 170, 44, 0.96) 52%, rgba(178, 129, 15, 0.98));
+            color: #141008;
             font-size: 0.94rem;
-            font-weight: 800;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            font-weight: 900;
+            box-shadow: 0 14px 28px rgba(214, 170, 44, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.56);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
 
         .nav-links a:hover,
-        .nav-links a:focus-visible {
-            background: rgba(230, 199, 86, 0.1);
-            color: #fff2a7;
+        .nav-links a:focus-visible,
+        .nav-links a.is-active {
+            color: #141008;
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+            box-shadow: 0 18px 34px rgba(214, 170, 44, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.68);
             outline: none;
         }
 
         .nav-links .demo-link {
-            background: linear-gradient(135deg, #fff1a6, #c99b12);
-            color: #141008;
-            margin-left: 8px;
-            box-shadow: 0 18px 32px rgba(214, 170, 44, 0.3);
+            margin-left: 0;
+        }
+
+        .nav-preview {
+            position: fixed;
+            top: 92px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 44;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-18px) scale(0.985);
+            transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+        }
+
+        .nav-preview.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        .nav-preview-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr auto;
+            gap: 22px;
+            align-items: center;
+            margin-top: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255, 230, 139, 0.42);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(135deg, rgba(8, 19, 52, 0.96), rgba(11, 39, 92, 0.92)),
+                radial-gradient(circle at 80% 20%, rgba(230, 199, 86, 0.2), transparent 34%);
+            box-shadow: 0 28px 70px rgba(0, 14, 45, 0.38);
+            overflow: hidden;
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-preview-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent),
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 18px);
+            transform: translateX(-60%);
+            animation: navPreviewSweep 3.6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .nav-preview-main,
+        .nav-preview-list,
+        .nav-preview-close {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-preview-main .mini {
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .nav-preview-main h3 {
+            color: #fff;
+            font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+            line-height: 1.08;
+            margin-bottom: 10px;
+        }
+
+        .nav-preview-main p {
+            color: rgba(255, 255, 255, 0.76);
+            font-weight: 650;
+            margin: 0;
+        }
+
+        .nav-preview-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .nav-preview-list span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 800;
+        }
+
+        .nav-preview-list i {
+            color: var(--gold);
+        }
+
+        .nav-preview-close {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 230, 139, 0.42);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .nav-preview-card {
+            grid-template-columns: minmax(0, 0.92fr) minmax(390px, 1.08fr);
+            height: min(424px, calc(100vh - 120px));
+            min-height: 0;
+            margin-top: 10px;
+            padding: clamp(18px, 2.35vw, 30px);
+            border-color: rgba(230, 199, 86, 0.3);
+            background:
+                radial-gradient(circle at 82% 12%, rgba(6, 150, 168, 0.12), transparent 30%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 255, 0.96));
+            color: var(--ink);
+            box-shadow: 0 34px 90px rgba(0, 14, 45, 0.32);
+            overflow: hidden;
+        }
+
+        .nav-preview-main .mini {
+            color: var(--teal-dark);
+        }
+
+        .nav-preview-main h3 {
+            color: #12120e;
+            font-size: clamp(1.7rem, 2.75vw, 2.55rem);
+            line-height: 1.05;
+            max-width: 520px;
+            margin-bottom: 10px;
+        }
+
+        .nav-preview-main p {
+            color: #566476;
+            max-width: 570px;
+            font-size: clamp(0.92rem, 1.12vw, 1rem);
+            line-height: 1.48;
+        }
+
+        .nav-preview-list {
+            gap: 9px;
+            margin-top: 15px;
+        }
+
+        .nav-preview-list span {
+            color: #243246;
+            font-size: 0.93rem;
+            font-weight: 900;
+        }
+
+        .nav-preview-list i {
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1fbf72, #08926b);
+            color: #fff;
+            font-size: 0.66rem;
+            flex: 0 0 auto;
+        }
+
+        .nav-preview-visual {
+            position: relative;
+            z-index: 1;
+            align-self: center;
+            min-height: 245px;
+            display: grid;
+            place-items: center;
+        }
+
+        .nav-preview-visual img {
+            display: block;
+            width: 100%;
+            max-height: min(275px, calc(100vh - 235px));
+            object-fit: contain;
+            border: 1px solid rgba(230, 199, 86, 0.28);
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: 0 28px 70px rgba(18, 24, 32, 0.16);
+        }
+
+        .nav-preview-contact-card {
+            width: min(100%, 590px);
+            padding: clamp(24px, 3vw, 38px);
+            border: 1px solid rgba(230, 199, 86, 0.34);
+            border-radius: 16px;
+            background:
+                linear-gradient(135deg, rgba(10, 26, 58, 0.96), rgba(9, 88, 128, 0.88)),
+                radial-gradient(circle at 90% 10%, rgba(255, 220, 91, 0.26), transparent 34%);
+            color: #fff;
+            box-shadow: 0 32px 80px rgba(0, 21, 57, 0.24);
+        }
+
+        .nav-preview-contact-card .contact-kicker {
+            color: var(--gold);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .nav-preview-contact-card h4 {
+            color: #fff;
+            font-size: clamp(1.45rem, 2.2vw, 2.15rem);
+            line-height: 1.12;
+            margin-bottom: 20px;
+        }
+
+        .nav-preview-contact-row {
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            gap: 14px;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .nav-preview-contact-row i {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ffe98a, #c69208);
+            color: #111;
+        }
+
+        .nav-preview-contact-row span {
+            display: block;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .nav-preview-contact-row strong {
+            display: block;
+            color: #fff;
+            font-size: clamp(1rem, 1.35vw, 1.16rem);
+            font-weight: 900;
+            overflow-wrap: anywhere;
+        }
+
+        .nav-preview-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 2;
+            border-color: rgba(20, 16, 8, 0.12);
+            background: rgba(10, 22, 50, 0.08);
+            color: #172033;
+        }
+
+        .nav-preview-card::before {
+            opacity: 0.45;
         }
 
         .hero {
             position: relative;
             min-height: calc(100vh - 116px);
-            padding: 92px 0 88px;
-            background:
-                radial-gradient(circle at 18% 18%, rgba(230, 199, 86, 0.16), transparent 26%),
-                radial-gradient(circle at 82% 16%, rgba(12, 154, 164, 0.14), transparent 28%),
-                linear-gradient(120deg, rgba(8, 8, 6, 0.98), rgba(20, 18, 10, 0.94) 52%, rgba(8, 8, 6, 0.98)),
-                url("SOFT DETAILS first window.PNG") center / cover no-repeat;
+            padding: 0;
+            background: linear-gradient(120deg, #081432 0%, #102466 48%, #061329 100%);
             overflow: hidden;
             color: #fff;
             isolation: isolate;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .hero-bg-slider,
+        .hero-bg-slide {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .hero-bg-slide {
+            opacity: 0;
+            background-position: center;
+            background-size: 100% 100%;
+            filter: none;
+            transform: none;
+            animation: portalSlide 20s infinite;
+        }
+
+        .hero-bg-slide:nth-child(1) {
+            background-image: url("premium-hero-1.PNG");
+            animation-delay: 0s;
+        }
+
+        .hero-bg-slide:nth-child(2) {
+            background-image: url("premium-hero-2.PNG");
+            animation-delay: 5s;
+        }
+
+        .hero-bg-slide:nth-child(3) {
+            background-image: url("premium-hero-3.PNG");
+            animation-delay: 10s;
+        }
+
+        .hero-bg-slide:nth-child(4) {
+            background-image: url("premium-hero-4.PNG");
+            animation-delay: 15s;
         }
 
         .hero::before {
@@ -202,9 +511,7 @@
             position: absolute;
             inset: 0;
             z-index: -1;
-            background:
-                linear-gradient(90deg, rgba(8, 8, 6, 0.95) 0%, rgba(8, 8, 6, 0.82) 44%, rgba(8, 8, 6, 0.66) 100%),
-                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 16px);
+            background: linear-gradient(180deg, transparent 0%, rgba(5, 15, 43, 0.12) 100%);
         }
 
         .hero::after {
@@ -218,13 +525,33 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 0.98fr 1.02fr;
+            grid-template-columns: 1fr;
             gap: 48px;
-            align-items: center;
+            align-items: end;
+            min-height: calc(100vh - 116px);
+            padding: 0 0 42px;
         }
 
         .hero-grid > * {
             min-width: 0;
+        }
+
+        .hero-copy-block {
+            max-width: 760px;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        .hero-copy-block .badge,
+        .hero-copy-block h1,
+        .hero-copy-block .hero-copy,
+        .hero-copy-block .hero-actions,
+        .hero-copy-block .hero-note {
+            display: none;
         }
 
         .badge {
@@ -346,10 +673,10 @@
 
         .mockup-card {
             position: relative;
-            border: 1px solid rgba(230, 199, 86, 0.26);
+            border: 1px solid rgba(184, 218, 255, 0.34);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 34px 75px rgba(0, 0, 0, 0.38);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 34px 75px rgba(0, 18, 72, 0.42);
             overflow: hidden;
             backdrop-filter: blur(16px);
         }
@@ -360,22 +687,22 @@
             gap: 7px;
             min-height: 34px;
             padding: 0 14px;
-            background: rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(230, 199, 86, 0.18);
+            background: rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(184, 218, 255, 0.22);
         }
 
         .mockup-stage {
             position: relative;
             aspect-ratio: 16 / 9;
             overflow: hidden;
-            background: #10100b;
+            background: #081432;
         }
 
         .mockup-slide {
             position: absolute;
             inset: 0;
             opacity: 0;
-            animation: jewellerySlide 8s infinite;
+            animation: portalSlide 20s infinite;
         }
 
         .mockup-slide:nth-child(1) {
@@ -383,7 +710,15 @@
         }
 
         .mockup-slide:nth-child(2) {
-            animation-delay: 4s;
+            animation-delay: 5s;
+        }
+
+        .mockup-slide:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        .mockup-slide:nth-child(4) {
+            animation-delay: 15s;
         }
 
         .mockup-top span {
@@ -406,8 +741,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: left top;
-            opacity: 0.94;
+            object-position: center;
+            opacity: 0.96;
         }
 
         .float-card {
@@ -416,10 +751,10 @@
             align-items: center;
             gap: 12px;
             padding: 15px 16px;
-            border: 1px solid rgba(230, 199, 86, 0.24);
+            border: 1px solid rgba(184, 218, 255, 0.24);
             border-radius: var(--radius);
-            background: rgba(24, 22, 15, 0.82);
-            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28);
+            background: rgba(8, 22, 58, 0.82);
+            box-shadow: 0 20px 42px rgba(0, 17, 68, 0.3);
             backdrop-filter: blur(14px);
         }
 
@@ -816,11 +1151,43 @@
             height: 4px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.38);
-            animation: dotSlide 8s infinite;
+            animation: portalDot 20s infinite;
         }
 
         .slide-dots span:nth-child(2) {
-            animation-delay: 4s;
+            animation-delay: 5s;
+        }
+
+        .slide-dots span:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        .slide-dots span:nth-child(4) {
+            animation-delay: 15s;
+        }
+
+        @keyframes portalSlide {
+            0%, 22% {
+                opacity: 1;
+            }
+
+            25%, 97% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes navPreviewSweep {
+            0%, 42% {
+                transform: translateX(-65%);
+            }
+
+            70%, 100% {
+                transform: translateX(65%);
+            }
         }
 
         @keyframes jewellerySlide {
@@ -837,12 +1204,12 @@
             }
         }
 
-        @keyframes dotSlide {
-            0%, 44% {
+        @keyframes portalDot {
+            0%, 22% {
                 background: var(--gold);
             }
 
-            50%, 94% {
+            25%, 97% {
                 background: rgba(255, 255, 255, 0.38);
             }
 
@@ -1217,6 +1584,77 @@
                 linear-gradient(180deg, #fff8ef 0%, #ffffff 78%);
         }
 
+        .about {
+            background:
+                radial-gradient(circle at 18% 18%, rgba(230, 199, 86, 0.14), transparent 30%),
+                radial-gradient(circle at 86% 28%, rgba(6, 150, 168, 0.12), transparent 32%),
+                linear-gradient(135deg, #fff8eb 0%, #f4fbfb 52%, #ffffff 100%);
+        }
+
+        .about-panel {
+            display: grid;
+            grid-template-columns: 0.78fr 1.22fr;
+            gap: 28px;
+            align-items: center;
+            padding: 34px;
+            border: 1px solid rgba(230, 199, 86, 0.24);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: var(--shadow);
+        }
+
+        .about-mark {
+            min-height: 210px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(6, 150, 168, 0.16);
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at 45% 35%, rgba(230, 199, 86, 0.22), transparent 34%),
+                linear-gradient(145deg, #132426, #18211b);
+        }
+
+        .about-mark i {
+            width: 82px;
+            height: 82px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: rgba(230, 199, 86, 0.16);
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .about-copy .mini {
+            color: var(--teal-dark);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .about-copy h2 {
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            line-height: 1.08;
+            margin-bottom: 16px;
+        }
+
+        .about-copy h2 span {
+            color: var(--gold-dark);
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .about-copy p {
+            color: #405165;
+            font-size: 1.06rem;
+            font-weight: 650;
+            line-height: 1.8;
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: 1.05fr 0.95fr;
@@ -1333,6 +1771,7 @@
             .hero-grid,
             .split-grid,
             .contact-grid,
+            .about-panel,
             .jewellery-panel {
                 grid-template-columns: 1fr;
             }
@@ -1353,6 +1792,18 @@
 
             .industry-detail {
                 grid-template-columns: 1fr;
+            }
+
+            .nav-preview-card {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-preview-visual {
+                min-height: 260px;
+            }
+
+            .nav-preview-close {
+                justify-self: end;
             }
         }
 
@@ -1421,6 +1872,30 @@
 
             .nav-links .demo-link {
                 margin-left: 0;
+            }
+
+            .nav-preview {
+                top: 110px;
+            }
+
+            .nav-preview-card {
+                margin-top: 8px;
+                padding: 18px;
+                gap: 16px;
+                min-height: auto;
+            }
+
+            .nav-preview-main h3 {
+                font-size: 1.45rem;
+            }
+
+            .nav-preview-main p,
+            .nav-preview-list span {
+                font-size: 0.92rem;
+            }
+
+            .nav-preview-visual {
+                min-height: 180px;
             }
 
             .hero {
@@ -1518,7 +1993,8 @@
 
             .feature-card,
             .contact-card,
-            .office-card {
+            .office-card,
+            .about-panel {
                 padding: 22px;
             }
         }
@@ -1546,23 +2022,48 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#billing">Billing</a></li>
-                <li><a href="#inventory">Inventory</a></li>
-                <li><a href="#industries">Industries</a></li>
-                <li><a href="#contact" class="demo-link">Free Demo</a></li>
+                <li><a href="#features" data-panel="features">Features</a></li>
+                <li><a href="#dashboard" data-panel="dashboard">Dashboard</a></li>
+                <li><a href="#billing" data-panel="billing">Billing</a></li>
+                <li><a href="#inventory" data-panel="inventory">Inventory</a></li>
+                <li><a href="#industries" data-panel="industries">Industries</a></li>
+                <li><a href="#about" data-panel="about">About Us</a></li>
             </ul>
         </div>
     </header>
 
+    <div class="nav-preview" id="navPreview" aria-live="polite" aria-hidden="true">
+        <div class="wrap">
+            <div class="nav-preview-card">
+                <div class="nav-preview-main">
+                    <div class="mini" id="navPreviewMini">Premium Preview</div>
+                    <h3 id="navPreviewTitle">Sales Easy</h3>
+                    <p id="navPreviewText">Select a menu option to view details without leaving this screen.</p>
+                    <div class="nav-preview-list" id="navPreviewList"></div>
+                </div>
+                <div class="nav-preview-visual">
+                    <img id="navPreviewImage" src="SOFT DETAILS first window.PNG" alt="Sales Easy software preview">
+                </div>
+                <button class="nav-preview-close" type="button" id="navPreviewClose" aria-label="Close preview">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <main>
         <section id="home" class="hero">
+            <div class="hero-bg-slider" aria-hidden="true">
+                <div class="hero-bg-slide"></div>
+                <div class="hero-bg-slide"></div>
+                <div class="hero-bg-slide"></div>
+                <div class="hero-bg-slide"></div>
+            </div>
             <div class="wrap hero-grid">
                 <div class="hero-copy-block">
-                    <span class="badge"><i class="fa-solid fa-circle-check"></i> Made for Indian GST businesses</span>
+                    <span class="badge"><i class="fa-solid fa-circle-check"></i> Made for Indian GST billing businesses</span>
                     <h1>Sales Easy<br><span>Billing Software</span></h1>
-                    <p class="hero-copy">Manage sales, purchase, stock, barcode,<br>payments, and GST reports<br>in one desktop software.</p>
+                    <p class="hero-copy">Manage sales, purchase, stock, barcode,<br>payments, customer ledger, GST reports and audit-ready business records<br>in one premium desktop software.</p>
 
                     <div class="hero-actions">
                         <a href="tel:+918910907972" class="btn btn-orange"><i class="fa-solid fa-phone"></i> Get Free Demo</a>
@@ -1573,45 +2074,6 @@
                             <span><i class="fa-solid fa-check"></i> 100% customise setup</span>
                         <span><i class="fa-solid fa-check"></i> CA associate guidance</span>
                         <span><i class="fa-solid fa-check"></i> Staff friendly screens</span>
-                    </div>
-                </div>
-
-                <div class="mockup" aria-label="Sales Easy software preview">
-                    <div class="mockup-card">
-                        <div class="mockup-top"><span></span><span></span><span></span></div>
-                        <div class="mockup-stage">
-                            <div class="mockup-slide">
-                                <img src="SALES EASY SALE WINDOW.PNG" alt="Sales Easy GST sale window">
-                            </div>
-                            <div class="mockup-slide has-text">
-                                <img src="2.PNG" alt="Sales Easy GST report support slide">
-                                <div class="slide-note">
-                                    <span>GST Report</span>
-                                    <strong>GST Report & Any Type Of GST Consultation</strong>
-                                    <small>Reports, GST filing support, ITR, and audit file help.</small>
-                                </div>
-                            </div>
-                            <div class="slide-dots" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="float-card float-left">
-                        <i class="fa-solid fa-receipt"></i>
-                        <div>
-                            <strong>GST Invoice</strong>
-                            <span>Print-ready billing</span>
-                        </div>
-                    </div>
-
-                    <div class="float-card float-right">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <div>
-                            <strong>Daily Reports</strong>
-                            <span>Sales and stock view</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1661,8 +2123,8 @@
 
                     <article class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-file-export"></i></div>
-                        <h3>GSTR-1, GSTR-3B, GSTR-9 Filing Made Easy</h3>
-                        <p>Keep GST reports organized so monthly, quarterly, and yearly filing preparation becomes simpler.</p>
+                        <h3>GSTR-1, GSTR-3B, GSTR-9 Report Preparation</h3>
+                        <p>Keep GST reports organized so monthly, quarterly, and yearly return data review becomes simpler.</p>
                     </article>
 
                     <article class="feature-card">
@@ -1819,6 +2281,21 @@
             </div>
         </section>
 
+        <section id="about" class="section about">
+            <div class="wrap">
+                <div class="about-panel">
+                    <div class="about-mark" aria-hidden="true">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <div class="about-copy">
+                        <div class="mini">About Us</div>
+                        <h2>Cryptojet <span>Software Solution</span></h2>
+                        <p>Cryptojet Software Solution & CA Associate was established in 2017 and builds custom billing software for practical business use.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="section contact">
             <div class="wrap">
                 <div class="section-head">
@@ -1831,10 +2308,6 @@
                     <article class="contact-card">
                         <h3><i class="fa-solid fa-headset"></i> Contact Details</h3>
                         <div class="contact-row">
-                            <i class="fa-solid fa-user"></i>
-                            <span><strong>Owner:</strong> Ratnadip Chakraborty</span>
-                        </div>
-                        <div class="contact-row">
                             <i class="fa-solid fa-phone"></i>
                             <span><strong>Primary:</strong> <a href="tel:+918910907972">+91 8910907972</a></span>
                         </div>
@@ -1844,16 +2317,12 @@
                         </div>
                         <div class="contact-row">
                             <i class="fa-solid fa-envelope"></i>
-                            <span><strong>Email:</strong> <a href="mailto:clonercloner000@gmail.com">clonercloner000@gmail.com</a></span>
-                        </div>
-                        <div class="contact-row">
-                            <i class="fa-solid fa-globe"></i>
-                            <span><strong>Website:</strong> <a href="https://www.cryptojet.co.in">www.cryptojet.co.in</a></span>
+                            <span><strong>Email:</strong> <a href="mailto:cryptojetsoftware000@gmail.com">cryptojetsoftware000@gmail.com</a></span>
                         </div>
 
                         <div class="section-actions" style="margin-top: 22px;">
                             <a href="tel:+918910907972" class="btn btn-orange"><i class="fa-solid fa-phone"></i> Call Now</a>
-                            <a href="mailto:clonercloner000@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Send Email</a>
+                            <a href="mailto:cryptojetsoftware000@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Send Email</a>
                         </div>
                     </article>
 
@@ -1868,10 +2337,6 @@
                             <p>Turopara Lane, Radhabazar<br>Nabadwip, Nadia<br>West Bengal - 741302</p>
                         </article>
 
-                        <article class="office-card">
-                            <h4><i class="fa-solid fa-user-tie"></i> Company</h4>
-                            <p>Cryptojet Software Solution & CA Associate was established in 2017 and builds custom billing software for practical business use.</p>
-                        </article>
                     </div>
                 </div>
             </div>
@@ -1898,12 +2363,129 @@
             toggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
         });
 
+        const navPreview = document.querySelector("#navPreview");
+        const navPreviewMini = document.querySelector("#navPreviewMini");
+        const navPreviewTitle = document.querySelector("#navPreviewTitle");
+        const navPreviewText = document.querySelector("#navPreviewText");
+        const navPreviewList = document.querySelector("#navPreviewList");
+        const navPreviewImage = document.querySelector("#navPreviewImage");
+        const navPreviewVisual = document.querySelector(".nav-preview-visual");
+        const navPreviewClose = document.querySelector("#navPreviewClose");
+        const navPreviewContent = {
+            features: {
+                mini: "Key Features",
+                title: "GST billing features",
+                text: "Sales Easy keeps billing, GST reports, inventory, barcode, and support tools arranged for practical daily business use.",
+                image: "SOFT DETAILS first window.PNG",
+                imageAlt: "Sales Easy feature screen",
+                points: ["GST-compliant invoice with tax breakup", "Barcode, POS and inventory management", "GSTR report preparation support"]
+            },
+            dashboard: {
+                mini: "Main Dashboard",
+                title: "Daily business dashboard",
+                text: "Sales Easy gives staff a familiar desktop workspace for ledger, product, purchase, sale, GST report, expense, settings, and logout controls.",
+                image: "nav-dashboard.PNG",
+                imageAlt: "Sales Easy dashboard sample",
+                points: ["Main menu access for sale, purchase, ledger, product, and reports", "Branded workspace for a professional first impression", "Simple desktop-style navigation for regular staff use"]
+            },
+            billing: {
+                mini: "Billing",
+                title: "Fast billing for busy counters",
+                text: "Create clean bills with GST breakup, customer ledger, payment modes, print-ready invoice, and return support for daily counter work.",
+                image: "SALES EASY SALE WINDOW.PNG",
+                imageAlt: "Sales Easy billing screen",
+                points: ["CGST, SGST and IGST auto calculation", "Customer ledger and payment records", "Print-ready GST invoice format"]
+            },
+            inventory: {
+                mini: "Inventory",
+                title: "Purchase & stock control",
+                text: "Purchase, sale, barcode, item movement, stock status, and branch-ready records stay organized in one system.",
+                image: "SALES EASY PURCHASE WINDOW.PNG",
+                imageAlt: "Sales Easy inventory and purchase screen",
+                points: ["Barcode and item-wise stock support", "Purchase entry and stock update", "Supplier and item movement records"]
+            },
+            industries: {
+                mini: "Industries",
+                title: "Business category setup",
+                text: "Retail, wholesale, pharmacy, garments, grocery, dealer, jewellery, and hospital workflows can be customised for different billing needs.",
+                image: "2.PNG",
+                imageAlt: "Sales Easy industry workflow preview",
+                points: ["Retail, wholesale, pharmacy, garments, and grocery", "Jewellery and hospital billing setup", "Fully customisable package"]
+            },
+            about: {
+                mini: "About Us",
+                title: "Cryptojet Software Solution",
+                text: "Cryptojet Software Solution & CA Associate was established in 2017 and builds custom billing software for practical Indian business use.",
+                contact: true,
+                points: ["Established in 2017", "Custom billing software development", "All India trusted customer support"]
+            }
+        };
+
+        const openNavPreview = (key, link) => {
+            const content = navPreviewContent[key];
+            if (!content || !navPreview) return;
+
+            links.querySelectorAll("a").forEach((item) => item.classList.remove("is-active"));
+            link.classList.add("is-active");
+            navPreviewMini.textContent = content.mini;
+            navPreviewTitle.textContent = content.title;
+            navPreviewText.textContent = content.text;
+            if (navPreviewVisual && content.contact) {
+                navPreviewVisual.innerHTML = `
+                    <div class="nav-preview-contact-card">
+                        <div class="contact-kicker">Contact Details</div>
+                        <h4>Talk to Sales Easy support</h4>
+                        <div class="nav-preview-contact-row">
+                            <i class="fa-solid fa-phone"></i>
+                            <div><span>Contact Us :</span><strong>+91&nbsp;9883475725</strong></div>
+                        </div>
+                        <div class="nav-preview-contact-row">
+                            <i class="fa-solid fa-headset"></i>
+                            <div><span>Support :</span><strong>+91&nbsp;8910907972</strong></div>
+                        </div>
+                        <div class="nav-preview-contact-row">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div><span>Email :</span><strong>cryptojetsoftware000@gmail.com</strong></div>
+                        </div>
+                    </div>`;
+            } else if (navPreviewVisual) {
+                navPreviewVisual.innerHTML = '<img id="navPreviewImage" src="" alt="">';
+                const freshPreviewImage = navPreviewVisual.querySelector("img");
+                freshPreviewImage.src = content.image;
+                freshPreviewImage.alt = content.imageAlt;
+            }
+            navPreviewList.innerHTML = "";
+            content.points.forEach((point) => {
+                const item = document.createElement("span");
+                const icon = document.createElement("i");
+                icon.className = "fa-solid fa-circle-check";
+                item.append(icon, document.createTextNode(point));
+                navPreviewList.appendChild(item);
+            });
+            navPreview.classList.add("is-open");
+            navPreview.setAttribute("aria-hidden", "false");
+        };
+
+        const closeNavPreview = () => {
+            navPreview?.classList.remove("is-open");
+            navPreview?.setAttribute("aria-hidden", "true");
+            links.querySelectorAll("a").forEach((item) => item.classList.remove("is-active"));
+        };
+
         links.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
                 links.classList.remove("is-open");
                 toggle.setAttribute("aria-expanded", "false");
                 toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                openNavPreview(link.dataset.panel, link);
             });
+        });
+
+        navPreviewClose?.addEventListener("click", closeNavPreview);
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeNavPreview();
         });
 
         const industryDetails = {
